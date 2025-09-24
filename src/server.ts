@@ -25,5 +25,21 @@ export function createServer() {
 
 export function startServer(port: number) {
   const app = createServer();
-  app.listen(port, () => logger.info({ port }, "server_started"));
+  
+  // Validate port before starting
+  if (!port || port < 1 || port > 65535) {
+    logger.error({ port }, "Invalid port number");
+    process.exit(1);
+  }
+  
+  app.listen(port, () => {
+    logger.info({ port, env: process.env.NODE_ENV }, "server_started");
+    console.log(`🚀 Server running on port ${port}`);
+  });
+  
+  // Handle server errors
+  app.on('error', (error: any) => {
+    logger.error({ error: error.message }, "server_error");
+    process.exit(1);
+  });
 }
