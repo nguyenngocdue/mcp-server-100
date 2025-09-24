@@ -1,5 +1,5 @@
-# Use Node.js 18 LTS
-FROM node:18-alpine
+# Use Node.js 23 LTS
+FROM node:23-alpine
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -8,13 +8,13 @@ RUN npm install -g pnpm
 WORKDIR /app
 
 # Copy package files
-COPY package.json pnpm-lock.yaml ./
+COPY package.json pnpm-lock.yaml tsconfig.json ./
+
+# Copy source code first (needed for build)
+COPY src ./src
 
 # Install dependencies
 RUN pnpm install --frozen-lockfile
-
-# Copy source code
-COPY . .
 
 # Build the application
 RUN pnpm run build
