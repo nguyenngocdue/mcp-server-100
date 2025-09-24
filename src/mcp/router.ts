@@ -157,19 +157,4 @@ router.post("/invoke", async (req, res) => {
   }
 });
 
-router.post("/:tool/:id?", async (req, res) => {
-//   // Log thông tin request
-//   console.log(`[MCP] Tool called: ${req.params.tool}, IP: ${req.ip}, UA: ${req.headers["user-agent"]}, Time: ${new Date().toISOString()}`);
-//   const tool = getTool(req.params.tool);
-//   if (!tool) return res.status(404).json({ error: "unknown_tool" });
-//   try {
-//     // Ưu tiên lấy req.body.arguments nếu có, fallback sang req.body
-//     const input = tool.inputSchema.parse(req.body.arguments ?? req.body);
-//     const out = await tool.handler(input);
-//     res.json(out);
-//   } catch (err: any) {
-//     res.status(400).json({ error: "bad_request", message: err?.message });
-//   }
-});
-
 export default router;
