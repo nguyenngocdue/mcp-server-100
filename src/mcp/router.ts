@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
                     inputSchema: (def.inputSchema as any).shape,
                 },
                 // SDK sẽ parse theo inputSchema rồi inject vào args
-                async (args) => {
+                async (args: any) => {
                     // args bây giờ đã là { values: number[] } đúng kiểu
                     console.log("[MCP] Tool args (parsed):", args);
 
