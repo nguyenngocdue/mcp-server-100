@@ -16,10 +16,9 @@ export const handler = async (_input: {}) => {
     councils.push(match[1]);
   }
 
-  return {
-    content: councils,
-    count: councils.length,
-  };
+  // Chuyển thành MCPContent[]
+  const content = councils.map((council) => ({ type: "text" as const, text: council }));
+  return { content };
 };
 
 export default {

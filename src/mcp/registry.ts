@@ -3,6 +3,7 @@ import type { MCPResult, ToolDef } from "../types";
 import { ping } from "./tools/ping";
 import { sum } from "./tools/sum";
 import { whoami } from "./tools/whoami";
+import townCouncils from "./tools/town-councils";
 
 export type AnyTool = ToolDef<any, MCPResult>;
 
@@ -12,10 +13,11 @@ function register(tool: AnyTool) {
   registry.set(tool.name, tool);
 }
 
-// đăng ký tools
+// register tools
 register(ping);
 register(sum);
 register(whoami);
+register(townCouncils);
 
 export function listTools() {
   return Array.from(registry.values()).map((t) => ({ name: t.name, description: t.description }));
