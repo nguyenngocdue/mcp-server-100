@@ -12,5 +12,5 @@ services:
         value: production
       - key: MCP_TOKEN
         generateValue: true
-      - key: API_KEY
+      - key: X_API_KEY
         generateValue: true
