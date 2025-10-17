@@ -10,6 +10,7 @@ export const inputSchema = z.object({
 export const handler = async ({ query }: { query: string }) => {
   const response = await client.chat.completions.create({
     model: "gpt-5-mini",
+    // tools: [{ type: 'web_search' }], // Removed unsupported tool type
     messages: [{ role: "user", content: query }],
   });
 

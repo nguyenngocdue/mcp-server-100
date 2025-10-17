@@ -3,7 +3,8 @@ import type { MCPResult, ToolDef } from "../types";
 import { ping } from "./tools/ping";
 import { sum } from "./tools/sum";
 import { whoami } from "./tools/whoami";
-import webSearchOpenAI from "./tools/webSearchOpenAI";
+import webSearchOpenAI from "./tools/web-search-openAI";
+import getCoordinates from "./tools/get-coordinates";
 
 export type AnyTool = ToolDef<any, MCPResult>;
 
@@ -18,6 +19,7 @@ register(ping);
 register(sum);
 register(whoami);
 register(webSearchOpenAI);
+register(getCoordinates);
 
 export function listTools() {
   return Array.from(registry.values()).map((t) => ({ name: t.name, description: t.description }));
