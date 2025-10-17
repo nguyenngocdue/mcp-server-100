@@ -41,12 +41,14 @@ async function createFile(filePath: string): Promise<string> {
   );
   console.log("fileId", fileId);
 
+  // Create a vector store
   const vectorStore = await openai.vectorStores.create({
     name: "knowledge_base",
   });
 
   console.log("vectorStore ", vectorStore)
 
+  // Associate the uploaded file with the vector store
   const fileAssociation = await openai.vectorStores.files.create(
     vectorStore.id,
     {
